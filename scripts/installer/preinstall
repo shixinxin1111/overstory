@@ -1,0 +1,21 @@
+#!/bin/sh
+set -eu
+version="@VERSION@"
+volume=${3:-/}
+volume=${volume%/}
+app="$volume/Applications/Overstory.app"
+scripts=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+/bin/sh "$scripts/cli-manager.sh" check "" "$version" "${volume:-/}"
+if [ -d "$app" ]; then
+  # Fail visibly; never stop an App process to install an update.
+  if /bin/ps -axo command= | /usr/bin/awk -v path="$app/Contents/MacOS/" 'index($0,path)==1 { found=1 } END { exit !found }'; then
+    printf '%s\n' '请先退出已安装的 Overstory，再安装更新。安装程序不会自动退出 App。' >&2
+    exit 1
+  fi
+  previous=$(/usr/libexec/PlistBuddy -c 'Print :CFBundleShortVersionString' "$app/Contents/Info.plist")
+  /usr/bin/awk -v old="$previous" -v new="$version" 'BEGIN {
+    if(old !~ /^[0-9]+\.[0-9]+\.[0-9]+$/) exit 1;
+    split(old,a,"."); split(new,b,".");
+    for(i=1;i<=3;i++) { if(a[i]+0>b[i]+0) exit 1; if(a[i]+0<b[i]+0) exit 0 }
+  }' || { printf '%s\n' "已安装 App 版本 $previous 高于安装包 ${version}，或版本信息无效。" >&2; exit 1; }
+fi

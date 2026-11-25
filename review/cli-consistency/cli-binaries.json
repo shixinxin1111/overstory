@@ -1,0 +1,796 @@
+{
+  "identity": {
+    "current": {
+      "path": "/Users/bytedance/Desktop/App/overstory/release/title-favorites/Overstory.app/Contents/Resources/overstory-cli",
+      "version": "overstory 0.1.0",
+      "sha256": "8d5af62862001f1d6ecd6bf16340b3ce19dbed81fe1ab7f06b505adba9ed8866"
+    },
+    "pkg": {
+      "path": "/tmp/overstory-cli-review-20261122/expanded/Payload/Applications/Overstory.app/Contents/Resources/overstory-cli",
+      "version": "overstory 0.1.0",
+      "sha256": "e08a277d13c00b00962badc34a54ec54603ce2fd42788f55ab9a444e23657f43"
+    }
+  },
+  "observations": [
+    {
+      "binary": "current",
+      "arguments": [
+        "schema"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"actions\":{\"create\":{\"bookmarksRequired\":[\"url\"],\"optional\":[\"groupId\",\"content\",\"favorited\"],\"required\":[\"type\",\"title\"]},\"create_group\":{\"required\":[\"type\",\"name\"]},\"delete\":{\"required\":[\"type\",\"id\"]},\"delete_group\":{\"required\":[\"type\",\"id\"]},\"move_favorite\":{\"optional\":[\"beforeItemId\"],\"required\":[\"type\",\"itemId\",\"expectedRevision\"]},\"move_group\":{\"optional\":[\"beforeGroupId\"],\"required\":[\"type\",\"groupId\",\"expectedRevision\"]},\"move_item\":{\"optional\":[\"toGroupId\",\"beforeItemId\"],\"required\":[\"type\",\"itemId\",\"expectedRevision\"]},\"rename_group\":{\"required\":[\"type\",\"id\",\"name\"]},\"set_favorite\":{\"required\":[\"type\",\"id\",\"favorited\"]},\"update\":{\"optional\":[\"title\",\"url\",\"content\",\"completed\",\"groupId\",\"expectedItemVersion\"],\"required\":[\"type\",\"id\"]}},\"commonOptionalFields\":[\"requestId\",\"expectedRevision\"],\"constraints\":{\"completed\":\"todos only\",\"content\":\"UTF-8 text, notes and todos only\",\"expectedItemVersion\":\"use item.version from get; rejects concurrent content edits\",\"groups\":\"bookmarks / notes only\",\"requestId\":\"1–200 bytes, same ID and payload replays; last 1000 retained\",\"url\":\"HTTP / HTTPS, bookmarks only\"},\"exitCodes\":{\"0\":\"success\",\"1\":\"storage or runtime error\",\"2\":\"arguments or validation\",\"3\":\"version / request conflict\"},\"modules\":[\"todos\",\"bookmarks\",\"notes\"],\"notes\":[\"stdout contains one JSON value with --json; failures use stderr\",\"CLI never starts the desktop App\",\"backup import requires --yes and preserves a pre-restore backup\"],\"output\":{\"failure\":{\"error\":{\"code\":\"stable code\",\"message\":\"description\"},\"ok\":false,\"protocolVersion\":1},\"success\":{\"data\":\"command result\",\"ok\":true,\"protocolVersion\":1,\"revision\":\"data revision\"}},\"protocolVersion\":1,\"transport\":\"overstory action <module> --stdin --json\"},\"ok\":true,\"protocolVersion\":1,\"revision\":null}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "actions": {
+            "create": {
+              "bookmarksRequired": [
+                "url"
+              ],
+              "optional": [
+                "groupId",
+                "content",
+                "favorited"
+              ],
+              "required": [
+                "type",
+                "title"
+              ]
+            },
+            "create_group": {
+              "required": [
+                "type",
+                "name"
+              ]
+            },
+            "delete": {
+              "required": [
+                "type",
+                "id"
+              ]
+            },
+            "delete_group": {
+              "required": [
+                "type",
+                "id"
+              ]
+            },
+            "move_favorite": {
+              "optional": [
+                "beforeItemId"
+              ],
+              "required": [
+                "type",
+                "itemId",
+                "expectedRevision"
+              ]
+            },
+            "move_group": {
+              "optional": [
+                "beforeGroupId"
+              ],
+              "required": [
+                "type",
+                "groupId",
+                "expectedRevision"
+              ]
+            },
+            "move_item": {
+              "optional": [
+                "toGroupId",
+                "beforeItemId"
+              ],
+              "required": [
+                "type",
+                "itemId",
+                "expectedRevision"
+              ]
+            },
+            "rename_group": {
+              "required": [
+                "type",
+                "id",
+                "name"
+              ]
+            },
+            "set_favorite": {
+              "required": [
+                "type",
+                "id",
+                "favorited"
+              ]
+            },
+            "update": {
+              "optional": [
+                "title",
+                "url",
+                "content",
+                "completed",
+                "groupId",
+                "expectedItemVersion"
+              ],
+              "required": [
+                "type",
+                "id"
+              ]
+            }
+          },
+          "commonOptionalFields": [
+            "requestId",
+            "expectedRevision"
+          ],
+          "constraints": {
+            "completed": "todos only",
+            "content": "UTF-8 text, notes and todos only",
+            "expectedItemVersion": "use item.version from get; rejects concurrent content edits",
+            "groups": "bookmarks / notes only",
+            "requestId": "1–200 bytes, same ID and payload replays; last 1000 retained",
+            "url": "HTTP / HTTPS, bookmarks only"
+          },
+          "exitCodes": {
+            "0": "success",
+            "1": "storage or runtime error",
+            "2": "arguments or validation",
+            "3": "version / request conflict"
+          },
+          "modules": [
+            "todos",
+            "bookmarks",
+            "notes"
+          ],
+          "notes": [
+            "stdout contains one JSON value with --json; failures use stderr",
+            "CLI never starts the desktop App",
+            "backup import requires --yes and preserves a pre-restore backup"
+          ],
+          "output": {
+            "failure": {
+              "error": {
+                "code": "stable code",
+                "message": "description"
+              },
+              "ok": false,
+              "protocolVersion": 1
+            },
+            "success": {
+              "data": "command result",
+              "ok": true,
+              "protocolVersion": 1,
+              "revision": "data revision"
+            }
+          },
+          "protocolVersion": 1,
+          "transport": "overstory action <module> --stdin --json"
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": null
+      }
+    },
+    {
+      "binary": "pkg",
+      "arguments": [
+        "schema"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"actions\":{\"create\":{\"bookmarksRequired\":[\"url\"],\"optional\":[\"groupId\",\"content\",\"favorited\"],\"required\":[\"type\",\"title\"]},\"create_group\":{\"required\":[\"type\",\"name\"]},\"delete\":{\"required\":[\"type\",\"id\"]},\"delete_group\":{\"required\":[\"type\",\"id\"]},\"move_favorite\":{\"optional\":[\"beforeItemId\"],\"required\":[\"type\",\"itemId\",\"expectedRevision\"]},\"move_group\":{\"optional\":[\"beforeGroupId\"],\"required\":[\"type\",\"groupId\",\"expectedRevision\"]},\"move_item\":{\"optional\":[\"toGroupId\",\"beforeItemId\"],\"required\":[\"type\",\"itemId\",\"expectedRevision\"]},\"rename_group\":{\"required\":[\"type\",\"id\",\"name\"]},\"set_favorite\":{\"required\":[\"type\",\"id\",\"favorited\"]},\"update\":{\"optional\":[\"title\",\"url\",\"content\",\"completed\",\"groupId\",\"expectedItemVersion\"],\"required\":[\"type\",\"id\"]}},\"commonOptionalFields\":[\"requestId\",\"expectedRevision\"],\"constraints\":{\"completed\":\"todos only\",\"content\":\"UTF-8 text, notes only\",\"expectedItemVersion\":\"use item.version from get; rejects concurrent content edits\",\"groups\":\"bookmarks / notes only\",\"requestId\":\"1–200 bytes, same ID and payload replays; last 1000 retained\",\"url\":\"HTTP / HTTPS, bookmarks only\"},\"exitCodes\":{\"0\":\"success\",\"1\":\"storage or runtime error\",\"2\":\"arguments or validation\",\"3\":\"version / request conflict\"},\"modules\":[\"todos\",\"bookmarks\",\"notes\"],\"notes\":[\"stdout contains one JSON value with --json; failures use stderr\",\"CLI never starts the desktop App\",\"backup import requires --yes and preserves a pre-restore backup\"],\"output\":{\"failure\":{\"error\":{\"code\":\"stable code\",\"message\":\"description\"},\"ok\":false,\"protocolVersion\":1},\"success\":{\"data\":\"command result\",\"ok\":true,\"protocolVersion\":1,\"revision\":\"data revision\"}},\"protocolVersion\":1,\"transport\":\"overstory action <module> --stdin --json\"},\"ok\":true,\"protocolVersion\":1,\"revision\":null}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "actions": {
+            "create": {
+              "bookmarksRequired": [
+                "url"
+              ],
+              "optional": [
+                "groupId",
+                "content",
+                "favorited"
+              ],
+              "required": [
+                "type",
+                "title"
+              ]
+            },
+            "create_group": {
+              "required": [
+                "type",
+                "name"
+              ]
+            },
+            "delete": {
+              "required": [
+                "type",
+                "id"
+              ]
+            },
+            "delete_group": {
+              "required": [
+                "type",
+                "id"
+              ]
+            },
+            "move_favorite": {
+              "optional": [
+                "beforeItemId"
+              ],
+              "required": [
+                "type",
+                "itemId",
+                "expectedRevision"
+              ]
+            },
+            "move_group": {
+              "optional": [
+                "beforeGroupId"
+              ],
+              "required": [
+                "type",
+                "groupId",
+                "expectedRevision"
+              ]
+            },
+            "move_item": {
+              "optional": [
+                "toGroupId",
+                "beforeItemId"
+              ],
+              "required": [
+                "type",
+                "itemId",
+                "expectedRevision"
+              ]
+            },
+            "rename_group": {
+              "required": [
+                "type",
+                "id",
+                "name"
+              ]
+            },
+            "set_favorite": {
+              "required": [
+                "type",
+                "id",
+                "favorited"
+              ]
+            },
+            "update": {
+              "optional": [
+                "title",
+                "url",
+                "content",
+                "completed",
+                "groupId",
+                "expectedItemVersion"
+              ],
+              "required": [
+                "type",
+                "id"
+              ]
+            }
+          },
+          "commonOptionalFields": [
+            "requestId",
+            "expectedRevision"
+          ],
+          "constraints": {
+            "completed": "todos only",
+            "content": "UTF-8 text, notes only",
+            "expectedItemVersion": "use item.version from get; rejects concurrent content edits",
+            "groups": "bookmarks / notes only",
+            "requestId": "1–200 bytes, same ID and payload replays; last 1000 retained",
+            "url": "HTTP / HTTPS, bookmarks only"
+          },
+          "exitCodes": {
+            "0": "success",
+            "1": "storage or runtime error",
+            "2": "arguments or validation",
+            "3": "version / request conflict"
+          },
+          "modules": [
+            "todos",
+            "bookmarks",
+            "notes"
+          ],
+          "notes": [
+            "stdout contains one JSON value with --json; failures use stderr",
+            "CLI never starts the desktop App",
+            "backup import requires --yes and preserves a pre-restore backup"
+          ],
+          "output": {
+            "failure": {
+              "error": {
+                "code": "stable code",
+                "message": "description"
+              },
+              "ok": false,
+              "protocolVersion": 1
+            },
+            "success": {
+              "data": "command result",
+              "ok": true,
+              "protocolVersion": 1,
+              "revision": "data revision"
+            }
+          },
+          "protocolVersion": 1,
+          "transport": "overstory action <module> --stdin --json"
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": null
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "add",
+        "CLI 描述核对",
+        "--content",
+        "多行说明\n保持描述",
+        "--favorite"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"group\":null,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"item\":{\"completed\":false,\"content\":\"多行说明\\n保持描述\",\"createdAt\":\"2026-11-21T19:57:30.252355+00:00\",\"favoriteIndex\":0,\"favorited\":true,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"sortIndex\":0,\"title\":\"CLI 描述核对\",\"updatedAt\":\"2026-11-21T19:57:30.252355+00:00\",\"version\":1},\"replayed\":false},\"ok\":true,\"protocolVersion\":1,\"revision\":1}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "group": null,
+          "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+          "item": {
+            "completed": false,
+            "content": "多行说明\n保持描述",
+            "createdAt": "2026-11-21T19:57:30.252355+00:00",
+            "favoriteIndex": 0,
+            "favorited": true,
+            "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+            "sortIndex": 0,
+            "title": "CLI 描述核对",
+            "updatedAt": "2026-11-21T19:57:30.252355+00:00",
+            "version": 1
+          },
+          "replayed": false
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 1
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "update",
+        "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+        "--content",
+        "更新后的说明"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"group\":null,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"item\":{\"completed\":false,\"content\":\"更新后的说明\",\"createdAt\":\"2026-11-21T19:57:30.252355+00:00\",\"favoriteIndex\":0,\"favorited\":true,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"sortIndex\":0,\"title\":\"CLI 描述核对\",\"updatedAt\":\"2026-11-21T19:57:30.283737+00:00\",\"version\":2},\"replayed\":false},\"ok\":true,\"protocolVersion\":1,\"revision\":2}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "group": null,
+          "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+          "item": {
+            "completed": false,
+            "content": "更新后的说明",
+            "createdAt": "2026-11-21T19:57:30.252355+00:00",
+            "favoriteIndex": 0,
+            "favorited": true,
+            "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+            "sortIndex": 0,
+            "title": "CLI 描述核对",
+            "updatedAt": "2026-11-21T19:57:30.283737+00:00",
+            "version": 2
+          },
+          "replayed": false
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 2
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "update",
+        "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+        "--content",
+        "旧内容",
+        "--expected-item-version",
+        "1"
+      ],
+      "exitCode": 3,
+      "stdout": "",
+      "stderr": "{\"error\":{\"code\":\"ITEM_CONFLICT\",\"message\":\"这项内容已被其他窗口或 CLI 修改。草稿已保留，请读取最新内容后再保存。\"},\"ok\":false,\"protocolVersion\":1}\n",
+      "result": {
+        "error": {
+          "code": "ITEM_CONFLICT",
+          "message": "这项内容已被其他窗口或 CLI 修改。草稿已保留，请读取最新内容后再保存。"
+        },
+        "ok": false,
+        "protocolVersion": 1
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "complete",
+        "c618f8e4-f865-4566-a4f5-4bb64dd5306e"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"group\":null,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"item\":{\"completed\":true,\"content\":\"更新后的说明\",\"createdAt\":\"2026-11-21T19:57:30.252355+00:00\",\"favoriteIndex\":0,\"favorited\":true,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"sortIndex\":0,\"title\":\"CLI 描述核对\",\"updatedAt\":\"2026-11-21T19:57:30.332428+00:00\",\"version\":3},\"replayed\":false},\"ok\":true,\"protocolVersion\":1,\"revision\":3}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "group": null,
+          "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+          "item": {
+            "completed": true,
+            "content": "更新后的说明",
+            "createdAt": "2026-11-21T19:57:30.252355+00:00",
+            "favoriteIndex": 0,
+            "favorited": true,
+            "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+            "sortIndex": 0,
+            "title": "CLI 描述核对",
+            "updatedAt": "2026-11-21T19:57:30.332428+00:00",
+            "version": 3
+          },
+          "replayed": false
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 3
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "get",
+        "c618f8e4-f865-4566-a4f5-4bb64dd5306e"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"completed\":true,\"content\":\"更新后的说明\",\"createdAt\":\"2026-11-21T19:57:30.252355+00:00\",\"favoriteIndex\":0,\"favorited\":true,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"sortIndex\":0,\"title\":\"CLI 描述核对\",\"updatedAt\":\"2026-11-21T19:57:30.332428+00:00\",\"version\":3},\"ok\":true,\"protocolVersion\":1,\"revision\":3}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "completed": true,
+          "content": "更新后的说明",
+          "createdAt": "2026-11-21T19:57:30.252355+00:00",
+          "favoriteIndex": 0,
+          "favorited": true,
+          "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+          "sortIndex": 0,
+          "title": "CLI 描述核对",
+          "updatedAt": "2026-11-21T19:57:30.332428+00:00",
+          "version": 3
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 3
+      }
+    },
+    {
+      "binary": "pkg",
+      "arguments": [
+        "snapshot"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"modules\":{\"bookmarks\":{\"data\":{\"groups\":[{\"createdAt\":\"2026-11-21T19:57:30.233947+00:00\",\"id\":\"ungrouped\",\"name\":\"未分组\",\"sortIndex\":0}],\"items\":[]},\"version\":1},\"notes\":{\"data\":{\"groups\":[{\"createdAt\":\"2026-11-21T19:57:30.233951+00:00\",\"id\":\"ungrouped\",\"name\":\"未分组\",\"sortIndex\":0}],\"items\":[]},\"version\":1},\"todos\":{\"data\":{\"groups\":[],\"items\":[{\"completed\":true,\"content\":\"更新后的说明\",\"createdAt\":\"2026-11-21T19:57:30.252355+00:00\",\"favoriteIndex\":0,\"favorited\":true,\"id\":\"c618f8e4-f865-4566-a4f5-4bb64dd5306e\",\"sortIndex\":0,\"title\":\"CLI 描述核对\",\"updatedAt\":\"2026-11-21T19:57:30.332428+00:00\",\"version\":3}]},\"version\":1}},\"preferences\":{\"moduleOrder\":[\"todos\",\"bookmarks\",\"notes\"],\"showTodoCount\":true},\"recoveryNotice\":null,\"revision\":3,\"schemaVersion\":1,\"session\":{\"activeModuleId\":\"todos\",\"collapsed\":{},\"scroll\":{},\"search\":{},\"selectedGroupIds\":{\"bookmarks\":\"all\",\"notes\":\"all\"},\"selectedNoteId\":null,\"todoFilter\":\"active\"},\"windowState\":{\"mainBounds\":null,\"mode\":\"orb\",\"monitorInfo\":null,\"orbPosition\":null,\"panelBounds\":null}},\"ok\":true,\"protocolVersion\":1,\"revision\":3}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "modules": {
+            "bookmarks": {
+              "data": {
+                "groups": [
+                  {
+                    "createdAt": "2026-11-21T19:57:30.233947+00:00",
+                    "id": "ungrouped",
+                    "name": "未分组",
+                    "sortIndex": 0
+                  }
+                ],
+                "items": []
+              },
+              "version": 1
+            },
+            "notes": {
+              "data": {
+                "groups": [
+                  {
+                    "createdAt": "2026-11-21T19:57:30.233951+00:00",
+                    "id": "ungrouped",
+                    "name": "未分组",
+                    "sortIndex": 0
+                  }
+                ],
+                "items": []
+              },
+              "version": 1
+            },
+            "todos": {
+              "data": {
+                "groups": [],
+                "items": [
+                  {
+                    "completed": true,
+                    "content": "更新后的说明",
+                    "createdAt": "2026-11-21T19:57:30.252355+00:00",
+                    "favoriteIndex": 0,
+                    "favorited": true,
+                    "id": "c618f8e4-f865-4566-a4f5-4bb64dd5306e",
+                    "sortIndex": 0,
+                    "title": "CLI 描述核对",
+                    "updatedAt": "2026-11-21T19:57:30.332428+00:00",
+                    "version": 3
+                  }
+                ]
+              },
+              "version": 1
+            }
+          },
+          "preferences": {
+            "moduleOrder": [
+              "todos",
+              "bookmarks",
+              "notes"
+            ],
+            "showTodoCount": true
+          },
+          "recoveryNotice": null,
+          "revision": 3,
+          "schemaVersion": 1,
+          "session": {
+            "activeModuleId": "todos",
+            "collapsed": {},
+            "scroll": {},
+            "search": {},
+            "selectedGroupIds": {
+              "bookmarks": "all",
+              "notes": "all"
+            },
+            "selectedNoteId": null,
+            "todoFilter": "active"
+          },
+          "windowState": {
+            "mainBounds": null,
+            "mode": "orb",
+            "monitorInfo": null,
+            "orbPosition": null,
+            "panelBounds": null
+          }
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 3
+      }
+    },
+    {
+      "binary": "pkg",
+      "arguments": [
+        "todos",
+        "add",
+        "旧包描述核对",
+        "--content",
+        "说明"
+      ],
+      "exitCode": 2,
+      "stdout": "",
+      "stderr": "{\"error\":{\"code\":\"VALIDATION\",\"message\":\"只有便签支持正文\"},\"ok\":false,\"protocolVersion\":1}\n",
+      "result": {
+        "error": {
+          "code": "VALIDATION",
+          "message": "只有便签支持正文"
+        },
+        "ok": false,
+        "protocolVersion": 1
+      }
+    },
+    {
+      "binary": "pkg",
+      "arguments": [
+        "notes",
+        "add",
+        "旧包便签",
+        "--content",
+        "保留正文"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"group\":null,\"id\":\"6bf50508-e205-4153-90bd-795b6d0f6970\",\"item\":{\"content\":\"保留正文\",\"createdAt\":\"2026-11-21T19:57:30.457143+00:00\",\"favorited\":false,\"groupId\":\"ungrouped\",\"id\":\"6bf50508-e205-4153-90bd-795b6d0f6970\",\"sortIndex\":0,\"title\":\"旧包便签\",\"updatedAt\":\"2026-11-21T19:57:30.457143+00:00\",\"version\":1},\"replayed\":false},\"ok\":true,\"protocolVersion\":1,\"revision\":1}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "group": null,
+          "id": "6bf50508-e205-4153-90bd-795b6d0f6970",
+          "item": {
+            "content": "保留正文",
+            "createdAt": "2026-11-21T19:57:30.457143+00:00",
+            "favorited": false,
+            "groupId": "ungrouped",
+            "id": "6bf50508-e205-4153-90bd-795b6d0f6970",
+            "sortIndex": 0,
+            "title": "旧包便签",
+            "updatedAt": "2026-11-21T19:57:30.457143+00:00",
+            "version": 1
+          },
+          "replayed": false
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 1
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "notes",
+        "get",
+        "6bf50508-e205-4153-90bd-795b6d0f6970"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"content\":\"保留正文\",\"createdAt\":\"2026-11-21T19:57:30.457143+00:00\",\"favorited\":false,\"groupId\":\"ungrouped\",\"id\":\"6bf50508-e205-4153-90bd-795b6d0f6970\",\"sortIndex\":0,\"title\":\"旧包便签\",\"updatedAt\":\"2026-11-21T19:57:30.457143+00:00\",\"version\":1},\"ok\":true,\"protocolVersion\":1,\"revision\":1}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "content": "保留正文",
+          "createdAt": "2026-11-21T19:57:30.457143+00:00",
+          "favorited": false,
+          "groupId": "ungrouped",
+          "id": "6bf50508-e205-4153-90bd-795b6d0f6970",
+          "sortIndex": 0,
+          "title": "旧包便签",
+          "updatedAt": "2026-11-21T19:57:30.457143+00:00",
+          "version": 1
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 1
+      }
+    },
+    {
+      "binary": "current",
+      "arguments": [
+        "todos",
+        "add",
+        "旧数据中的新待办"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"group\":null,\"id\":\"0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9\",\"item\":{\"completed\":false,\"createdAt\":\"2026-11-21T19:57:30.519996+00:00\",\"favorited\":false,\"id\":\"0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9\",\"sortIndex\":0,\"title\":\"旧数据中的新待办\",\"updatedAt\":\"2026-11-21T19:57:30.519996+00:00\",\"version\":1},\"replayed\":false},\"ok\":true,\"protocolVersion\":1,\"revision\":2}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "group": null,
+          "id": "0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9",
+          "item": {
+            "completed": false,
+            "createdAt": "2026-11-21T19:57:30.519996+00:00",
+            "favorited": false,
+            "id": "0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9",
+            "sortIndex": 0,
+            "title": "旧数据中的新待办",
+            "updatedAt": "2026-11-21T19:57:30.519996+00:00",
+            "version": 1
+          },
+          "replayed": false
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 2
+      }
+    },
+    {
+      "binary": "pkg",
+      "arguments": [
+        "snapshot"
+      ],
+      "exitCode": 0,
+      "stdout": "{\"data\":{\"modules\":{\"bookmarks\":{\"data\":{\"groups\":[{\"createdAt\":\"2026-11-21T19:57:30.439744+00:00\",\"id\":\"ungrouped\",\"name\":\"未分组\",\"sortIndex\":0}],\"items\":[]},\"version\":1},\"notes\":{\"data\":{\"groups\":[{\"createdAt\":\"2026-11-21T19:57:30.439747+00:00\",\"id\":\"ungrouped\",\"name\":\"未分组\",\"sortIndex\":0}],\"items\":[{\"content\":\"保留正文\",\"createdAt\":\"2026-11-21T19:57:30.457143+00:00\",\"favorited\":false,\"groupId\":\"ungrouped\",\"id\":\"6bf50508-e205-4153-90bd-795b6d0f6970\",\"sortIndex\":0,\"title\":\"旧包便签\",\"updatedAt\":\"2026-11-21T19:57:30.457143+00:00\",\"version\":1}]},\"version\":1},\"todos\":{\"data\":{\"groups\":[],\"items\":[{\"completed\":false,\"createdAt\":\"2026-11-21T19:57:30.519996+00:00\",\"favorited\":false,\"id\":\"0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9\",\"sortIndex\":0,\"title\":\"旧数据中的新待办\",\"updatedAt\":\"2026-11-21T19:57:30.519996+00:00\",\"version\":1}]},\"version\":1}},\"preferences\":{\"moduleOrder\":[\"todos\",\"bookmarks\",\"notes\"],\"showTodoCount\":true},\"recoveryNotice\":null,\"revision\":2,\"schemaVersion\":1,\"session\":{\"activeModuleId\":\"todos\",\"collapsed\":{},\"scroll\":{},\"search\":{},\"selectedGroupIds\":{\"bookmarks\":\"all\",\"notes\":\"all\"},\"selectedNoteId\":null,\"todoFilter\":\"active\"},\"windowState\":{\"mainBounds\":null,\"mode\":\"orb\",\"monitorInfo\":null,\"orbPosition\":null,\"panelBounds\":null}},\"ok\":true,\"protocolVersion\":1,\"revision\":2}\n",
+      "stderr": "",
+      "result": {
+        "data": {
+          "modules": {
+            "bookmarks": {
+              "data": {
+                "groups": [
+                  {
+                    "createdAt": "2026-11-21T19:57:30.439744+00:00",
+                    "id": "ungrouped",
+                    "name": "未分组",
+                    "sortIndex": 0
+                  }
+                ],
+                "items": []
+              },
+              "version": 1
+            },
+            "notes": {
+              "data": {
+                "groups": [
+                  {
+                    "createdAt": "2026-11-21T19:57:30.439747+00:00",
+                    "id": "ungrouped",
+                    "name": "未分组",
+                    "sortIndex": 0
+                  }
+                ],
+                "items": [
+                  {
+                    "content": "保留正文",
+                    "createdAt": "2026-11-21T19:57:30.457143+00:00",
+                    "favorited": false,
+                    "groupId": "ungrouped",
+                    "id": "6bf50508-e205-4153-90bd-795b6d0f6970",
+                    "sortIndex": 0,
+                    "title": "旧包便签",
+                    "updatedAt": "2026-11-21T19:57:30.457143+00:00",
+                    "version": 1
+                  }
+                ]
+              },
+              "version": 1
+            },
+            "todos": {
+              "data": {
+                "groups": [],
+                "items": [
+                  {
+                    "completed": false,
+                    "createdAt": "2026-11-21T19:57:30.519996+00:00",
+                    "favorited": false,
+                    "id": "0ffba17a-fa35-4ed7-9f50-e8c37c2b1bc9",
+                    "sortIndex": 0,
+                    "title": "旧数据中的新待办",
+                    "updatedAt": "2026-11-21T19:57:30.519996+00:00",
+                    "version": 1
+                  }
+                ]
+              },
+              "version": 1
+            }
+          },
+          "preferences": {
+            "moduleOrder": [
+              "todos",
+              "bookmarks",
+              "notes"
+            ],
+            "showTodoCount": true
+          },
+          "recoveryNotice": null,
+          "revision": 2,
+          "schemaVersion": 1,
+          "session": {
+            "activeModuleId": "todos",
+            "collapsed": {},
+            "scroll": {},
+            "search": {},
+            "selectedGroupIds": {
+              "bookmarks": "all",
+              "notes": "all"
+            },
+            "selectedNoteId": null,
+            "todoFilter": "active"
+          },
+          "windowState": {
+            "mainBounds": null,
+            "mode": "orb",
+            "monitorInfo": null,
+            "orbPosition": null,
+            "panelBounds": null
+          }
+        },
+        "ok": true,
+        "protocolVersion": 1,
+        "revision": 2
+      }
+    }
+  ]
+}

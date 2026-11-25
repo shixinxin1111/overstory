@@ -1,0 +1,26 @@
+{
+  "name": "restore-expected-revision",
+  "beforeRevision": 2,
+  "result": {
+    "args": [
+      "--expected-revision",
+      "0",
+      "backup",
+      "import",
+      "/tmp/overstory-cli-review-20261122/group/g1-data-G9Oq3N/restore-expected-revision/backup.json",
+      "--yes"
+    ],
+    "exit": 0,
+    "stdout": "{\"data\":{\"restored\":true},\"ok\":true,\"protocolVersion\":1,\"revision\":3}",
+    "stderr": "",
+    "value": {
+      "data": {
+        "restored": true
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 3
+    }
+  },
+  "itemCountAfter": 1
+}

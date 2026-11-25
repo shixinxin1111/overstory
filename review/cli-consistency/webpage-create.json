@@ -1,0 +1,50 @@
+[
+  {
+    "payload": {
+      "type": "create",
+      "id": null,
+      "title": "网页",
+      "url": "example.com",
+      "groupId": "ungrouped"
+    },
+    "exitCode": 2,
+    "result": {
+      "error": {
+        "code": "VALIDATION",
+        "message": "此动作不支持字段：id"
+      },
+      "ok": false,
+      "protocolVersion": 1
+    }
+  },
+  {
+    "payload": {
+      "type": "create",
+      "title": "网页",
+      "url": "example.com",
+      "groupId": "ungrouped"
+    },
+    "exitCode": 0,
+    "result": {
+      "data": {
+        "group": null,
+        "id": "880e8999-d590-4843-9e0a-5334b23758b7",
+        "item": {
+          "createdAt": "2026-11-21T20:03:01.612817+00:00",
+          "favorited": false,
+          "groupId": "ungrouped",
+          "id": "880e8999-d590-4843-9e0a-5334b23758b7",
+          "sortIndex": 0,
+          "title": "网页",
+          "updatedAt": "2026-11-21T20:03:01.612817+00:00",
+          "url": "https://example.com/",
+          "version": 1
+        },
+        "replayed": false
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 1
+    }
+  }
+]

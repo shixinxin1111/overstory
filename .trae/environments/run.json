@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "defaultActionId": "desktop",
+  "actions": [
+    {
+      "id": "desktop",
+      "name": "Overstory 桌面应用",
+      "command": "open release/title-favorites/Overstory.app",
+      "cwd": ".",
+      "background": false,
+      "source": "agent",
+      "open": {
+        "type": "terminal"
+      }
+    }
+  ]
+}

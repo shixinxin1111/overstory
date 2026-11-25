@@ -1,0 +1,37 @@
+#!/bin/sh
+set -eu
+volume=${3:-/}
+volume=${volume%/}
+scripts=$(CDPATH= cd -- "$(dirname "$0")" && pwd)
+/bin/sh "$scripts/cli-manager.sh" install "$volume/Applications/Overstory.app/Contents/Resources/cli/overstory-cli" "@VERSION@" "${volume:-/}"
+
+# Install into the logged-in user's shared skill directory, never the installer's root HOME.
+# An offline target volume has no matching logged-in user; manage its skill from App settings.
+if [ -n "$volume" ]; then
+  printf '%s\n' '目标为非当前系统卷；安装后请在 Overstory 设置中安装配套 SKILL。'
+  exit 0
+fi
+console_user=$(/usr/bin/stat -f '%Su' /dev/console) || console_user=""
+case "$console_user" in
+  ""|root|loginwindow|_mbsetupuser)
+    printf '%s\n' '未找到已登录的普通用户；请登录后在 Overstory 设置中安装配套 SKILL。'
+    exit 0
+    ;;
+esac
+user_home=$(/usr/bin/dscl -plist . -read "/Users/$console_user" NFSHomeDirectory |
+  /usr/bin/plutil -extract 'dsAttrTypeStandard:NFSHomeDirectory.0' raw -o - -) || user_home=""
+case "$user_home" in
+  ""|/|/var/root|/private/var/root)
+    printf '%s\n' '无法确认当前用户的主目录；请在 Overstory 设置中安装配套 SKILL。' >&2
+    exit 0
+    ;;
+  /*) ;;
+  *)
+    printf '%s\n' '当前用户主目录不是绝对路径；请在 Overstory 设置中安装配套 SKILL。' >&2
+    exit 0
+    ;;
+esac
+if ! /usr/bin/sudo -H -u "$console_user" -- /usr/local/bin/overstory --json skill install \
+  --directory "$user_home/.agents/skills/overstory"; then
+  printf '%s\n' 'App 和 CLI 已安装；配套 SKILL 安装未完成，原文件已保留。请在 Overstory 设置中查看状态。' >&2
+fi

@@ -1,0 +1,149 @@
+[
+  {
+    "arguments": [
+      "todos",
+      "add",
+      "旧版事项",
+      "--content",
+      "表单打开时的说明"
+    ],
+    "payload": null,
+    "exitCode": 0,
+    "result": {
+      "data": {
+        "group": null,
+        "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+        "item": {
+          "completed": false,
+          "content": "表单打开时的说明",
+          "createdAt": "2026-11-21T20:00:07.567701+00:00",
+          "favorited": false,
+          "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+          "sortIndex": 0,
+          "title": "旧版事项",
+          "updatedAt": "2026-11-21T20:00:07.567701+00:00",
+          "version": 1
+        },
+        "replayed": false
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 1
+    }
+  },
+  {
+    "arguments": [
+      "todos",
+      "get",
+      "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e"
+    ],
+    "payload": null,
+    "exitCode": 0,
+    "result": {
+      "data": {
+        "completed": false,
+        "content": "表单打开时的说明",
+        "createdAt": "2026-11-21T20:00:07.567701+00:00",
+        "favorited": false,
+        "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+        "sortIndex": 0,
+        "title": "旧版事项",
+        "updatedAt": "2026-11-21T20:00:07.567701+00:00",
+        "version": 0
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 1
+    }
+  },
+  {
+    "arguments": [
+      "todos",
+      "update",
+      "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+      "--content",
+      "CLI 最新说明"
+    ],
+    "payload": null,
+    "exitCode": 0,
+    "result": {
+      "data": {
+        "group": null,
+        "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+        "item": {
+          "completed": false,
+          "content": "CLI 最新说明",
+          "createdAt": "2026-11-21T20:00:07.567701+00:00",
+          "favorited": false,
+          "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+          "sortIndex": 0,
+          "title": "旧版事项",
+          "updatedAt": "2026-11-21T20:00:07.619578+00:00",
+          "version": 1
+        },
+        "replayed": false
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 2
+    }
+  },
+  {
+    "arguments": [
+      "action",
+      "todos",
+      "--stdin"
+    ],
+    "payload": {
+      "type": "update",
+      "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+      "title": "旧版事项",
+      "content": "表单打开时的说明",
+      "expectedItemVersion": 0
+    },
+    "exitCode": 3,
+    "result": {
+      "error": {
+        "code": "ITEM_CONFLICT",
+        "message": "这项内容已被其他窗口或 CLI 修改。草稿已保留，请读取最新内容后再保存。"
+      },
+      "ok": false,
+      "protocolVersion": 1
+    }
+  },
+  {
+    "arguments": [
+      "action",
+      "todos",
+      "--stdin"
+    ],
+    "payload": {
+      "type": "update",
+      "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+      "title": "旧版事项",
+      "content": "表单打开时的说明"
+    },
+    "exitCode": 0,
+    "result": {
+      "data": {
+        "group": null,
+        "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+        "item": {
+          "completed": false,
+          "content": "表单打开时的说明",
+          "createdAt": "2026-11-21T20:00:07.567701+00:00",
+          "favorited": false,
+          "id": "9a7f6ae9-e4ad-4f4a-810b-bbbd3027438e",
+          "sortIndex": 0,
+          "title": "旧版事项",
+          "updatedAt": "2026-11-21T20:00:07.665692+00:00",
+          "version": 2
+        },
+        "replayed": false
+      },
+      "ok": true,
+      "protocolVersion": 1,
+      "revision": 3
+    }
+  }
+]

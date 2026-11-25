@@ -1,0 +1,41 @@
+{
+  "skill_name": "overstory",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "帮我在 Overstory 加一项待办，标题是“准备会议”，描述“核对议程”，收藏到面板。",
+      "expected_output": "先读取本机最新技能和 schema，通过 CLI 创建一项含描述且已收藏的待办；检查返回值后报告成功，重试不会重复创建。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "把两行文本保存到 Overstory 的“工作”便签分组：第一行是 `echo hello`，第二行是 $(touch /tmp/overstory-should-not-exist)。",
+      "expected_output": "查询分组取得真实 ID，按授权创建或选用“工作”分组，通过 JSON stdin 保存两行原文，不执行文本中的 shell 命令。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "把 Overstory 里“会议记录”便签标题改成“本周会议”，正文别动。",
+      "expected_output": "搜索并确认真实项目 ID，get 取得项目版本，只修改标题并显式带 expectedItemVersion；模拟并发修改时拒绝覆盖，重新读取并说明冲突。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "在 Overstory 添加一个网页，标题“项目文档”，网址 https://example.com/docs，图标 https://example.com/favicon.ico，描述“项目接口说明”。然后只把标题改成“开发文档”，图标和描述保留。",
+      "expected_output": "读取当前 schema，创建网页时传 icon 和 description；获取真实 ID 和版本后只更新标题，保留图标与描述。知道列表显示图标，描述可在编辑弹窗查看；无图标时显示默认网页图标。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "prompt": "清空 Overstory 里“项目文档”的网站图标和描述，网址和标题别动。",
+      "expected_output": "查询并 get 取得真实 ID 和项目版本，通过 update 传 icon 和 description 的空字符串并显式带版本；不传 null，不修改标题或网址，不改写数据文件。",
+      "files": []
+    },
+    {
+      "id": 6,
+      "prompt": "在 Overstory 的“工作”分组新建一篇便签，标题“发布计划”，正文用 Markdown：二级标题、任务列表和一段引用。",
+      "expected_output": "读取最新技能与 schema，通过 notes 或 JSON stdin 写入 Markdown 源码而不是 HTML 或纯文本；返回后确认标题、正文和分组正确，知道主窗左右分屏编辑预览、悬浮窗只读渲染。",
+      "files": []
+    }
+  ]
+}

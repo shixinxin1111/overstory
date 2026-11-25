@@ -1,0 +1,94 @@
+{
+  "revision": 99,
+  "modules": {
+    "todos": {
+      "items": 10,
+      "examples": 8,
+      "favorites": 5,
+      "groups": [],
+      "exampleIds": [
+        "430363ae-9fb7-404c-9424-feaeb081845f",
+        "9fabc31a-da38-46e0-b84b-607e6f80a92b",
+        "991ebf2e-fed0-494a-8975-bfa102f882a6",
+        "db3132a0-02e7-44f2-97dd-a20136b51a4e",
+        "216da81a-3e94-442f-aaed-25baff584931",
+        "40fd2cda-ce36-4bab-8f1d-f1a1fc4aaad6",
+        "a15bdbb6-dca7-453f-aa4a-c4852d7c8c6e",
+        "d895d27f-0801-43d1-9d15-a89ef50c0fa4"
+      ]
+    },
+    "bookmarks": {
+      "items": 10,
+      "examples": 10,
+      "favorites": 5,
+      "groups": [
+        {
+          "name": "未分组",
+          "items": 1
+        },
+        {
+          "name": "示例 · 设计参考",
+          "items": 3
+        },
+        {
+          "name": "示例 · 开发文档",
+          "items": 3
+        },
+        {
+          "name": "示例 · 常用工具",
+          "items": 3
+        }
+      ],
+      "exampleIds": [
+        "e5f7a6e0-e590-4db2-ac69-9ae5f2aafa4c",
+        "d559366d-4b8e-4c43-bb23-95aadd457f5f",
+        "1ecb528c-c84b-4da2-82e7-fdce56f40e61",
+        "1158ed21-af37-4626-91c4-a9216324687c",
+        "93c5407a-e38c-47eb-bf4a-b90eebe60882",
+        "0d4a785c-c9bb-4f0d-9276-e05ff01c3c36",
+        "eb9f5c1f-696b-4dfd-a436-77c904e536d7",
+        "04523008-ef5e-4392-aa98-093cdb539c6b",
+        "44819358-6624-46bd-87e9-904ea68ee910",
+        "7445759c-f770-434e-b795-9db65f73eb85"
+      ]
+    },
+    "notes": {
+      "items": 8,
+      "examples": 8,
+      "favorites": 4,
+      "groups": [
+        {
+          "name": "未分组",
+          "items": 1
+        },
+        {
+          "name": "剧创",
+          "items": 1
+        },
+        {
+          "name": "示例 · 工作记录",
+          "items": 2
+        },
+        {
+          "name": "示例 · 灵感摘录",
+          "items": 2
+        },
+        {
+          "name": "示例 · 日常清单",
+          "items": 2
+        }
+      ],
+      "exampleIds": [
+        "d659c4ae-8594-4663-91cd-8fbde3e065ca",
+        "d3a93d86-e9b8-4bb5-9069-c582c2018ba0",
+        "b4110fc2-a7ed-4451-b6fa-83c6b0886071",
+        "6c4a7cee-5808-410c-b1a0-19becd476576",
+        "b3cb05d9-9be4-497e-8e7e-e7e318163389",
+        "548efb7f-6218-4182-99a8-0f447985bc12",
+        "833897d6-2145-460b-9ec4-326cb3c72e67",
+        "55b25df7-2c80-4cbf-b5f3-b4285e193aa8"
+      ]
+    }
+  },
+  "originalsPreserved": true
+}

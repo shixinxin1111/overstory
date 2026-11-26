@@ -144,12 +144,18 @@ export function SortableScope({ children, onMove, groups = [], orientation = 've
     {drag && !drag.keyboard ? createPortal(<motion.div className="drag-ghost" style={{ x, y, width: drag.width }} transition={springs.feedback}>{drag.entry.label}</motion.div>, document.body) : null}
   </Context.Provider>;
 }
-export function SortRow({ entry, children, className = '', disabled = false }: { entry: SortEntry; children: ReactNode; className?: string; disabled?: boolean }) {
+export function SortRow({ entry, children, className = '', disabled = false, onActivate }: { entry: SortEntry; children: ReactNode; className?: string; disabled?: boolean; onActivate?: () => void }) {
   const api = useContext(Context)!;
   return <motion.div layout="position" transition={springs.content} data-sort-id={entry.id} data-sort-kind={entry.kind} data-sort-group={entry.groupId}
     tabIndex={disabled ? undefined : 0} aria-label={`排序：${entry.label}`} aria-keyshortcuts="Space ArrowUp ArrowDown ArrowLeft ArrowRight Enter Escape"
     onPointerDown={e => { if (!disabled) api.start(entry, e); }}
     onKeyDown={e => { if (!disabled && e.target === e.currentTarget) api.key(entry, e); }}
+    onClick={e => {
+      if (!onActivate) return;
+      const control = (e.target as HTMLElement).closest('button,a,input,textarea,select,[role="checkbox"],[role="switch"]');
+      if (control && !control.hasAttribute('data-row-drag')) return;
+      onActivate();
+    }}
     onClickCapture={e => { if (e.detail > 0 && api.suppressClick(entry)) { e.preventDefault(); e.stopPropagation(); } }}
     className={`sort-row ${disabled ? 'sort-disabled' : ''} ${className} ${api.marker(entry.kind, entry.id, entry.groupId) ? 'insert-before' : ''} ${api.drag?.entry.id === entry.id && api.drag.entry.kind === entry.kind ? 'drag-source' : ''}`}>{children}</motion.div>;
 }

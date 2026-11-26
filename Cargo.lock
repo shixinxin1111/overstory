@@ -2698,7 +2698,7 @@ dependencies = [
 
 [[package]]
 name = "overstory"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "chrono",
  "notify",
@@ -2717,7 +2717,7 @@ dependencies = [
 
 [[package]]
 name = "overstory-cli"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "clap",
  "overstory-core",
@@ -2727,7 +2727,7 @@ dependencies = [
 
 [[package]]
 name = "overstory-core"
-version = "1.1.0"
+version = "1.1.1"
 dependencies = [
  "chrono",
  "semver",

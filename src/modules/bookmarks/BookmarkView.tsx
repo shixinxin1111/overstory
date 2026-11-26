@@ -44,7 +44,7 @@ export function BookmarkView() {
       <div className="list-scroll" data-scroll>
         <GroupedList module="bookmarks" groups={data.groups} items={visible} search={query} temporaryGroup={hoverGroup} renderItem={item => {
           const entry = { id: item.id, kind: 'item' as const, label: item.title, groupId: item.groupId };
-          return <SortRow key={item.id} entry={entry} disabled={!!query} className="bookmark-row"><div className="row-title"><button data-row-drag className="bookmark-select" onClick={() => void run(async () => { await call('open_bookmark', { id: item.id }); toast(`已打开${item.title}`); })}><BookmarkIcon icon={item.icon}/><span>{item.title}</span></button><FavoriteButton module="bookmarks" item={item} className={item.favorited ? '' : 'row-action'}/></div><RowMenu title={item.title} onEdit={() => setEdit(item)} onDelete={() => setDeleting(item)}/></SortRow>;
+          return <SortRow key={item.id} entry={entry} disabled={!!query} className="bookmark-row" onActivate={() => void run(async () => { await call('open_bookmark', { id: item.id }); toast(`已打开${item.title}`); })}><div className="row-title"><button data-row-drag className="bookmark-select"><BookmarkIcon icon={item.icon}/><span>{item.title}</span></button><FavoriteButton module="bookmarks" item={item} className={item.favorited ? '' : 'row-action'}/></div><RowMenu title={item.title} onEdit={() => setEdit(item)} onDelete={() => setDeleting(item)}/></SortRow>;
         }}/>
         {!visible.length ? <EmptyState icon="bookmarks" title={query ? '没有匹配的网页' : '暂无网页'} detail={query ? '试试网页标题或域名。' : '添加网址后，点击标题打开。'}/> : null}
       </div>

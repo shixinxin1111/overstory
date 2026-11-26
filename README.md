@@ -21,7 +21,7 @@ pnpm tauri build --bundles app
 python3 scripts/build-pkg.py
 ```
 
-产物：`release/Overstory-1.1.0.pkg`，安装 App、`overstory` CLI 和配套 SKILL，重复安装保留用户数据。
+产物：`release/Overstory-1.1.1.pkg`，安装 App、`overstory` CLI 和配套 SKILL，重复安装保留用户数据。
 
 ## 环境要求
 

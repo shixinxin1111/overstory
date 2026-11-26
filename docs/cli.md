@@ -4,7 +4,7 @@ CLI 是独立的 Rust 程序，与桌面 App 共用 `overstory-core` 数据层�
 
 ## 安装与升级
 
-打开 `release/Overstory-1.1.0.pkg`，安装程序将 App 安装到 `/Applications/Overstory.app`，并自动安装：
+打开 `release/Overstory-1.1.1.pkg`，安装程序将 App 安装到 `/Applications/Overstory.app`，并自动安装：
 
 ```text
 /usr/local/bin/overstory → /usr/local/lib/overstory/overstory-cli
@@ -169,7 +169,7 @@ src-tauri/target/release/overstory-cli --help
 
 # 构建 App（自动包含 CLI、完整技能、入口资源及安装脚本）
 pnpm tauri build --bundles app
-# 输出 release/Overstory-1.1.0.pkg 和 release/overstory-skill.zip
+# 输出 release/Overstory-1.1.1.pkg 和 release/overstory-skill.zip
 python3 scripts/build-pkg.py
 
 # 验证

@@ -34,13 +34,14 @@ export function FavoritesView({ module }: { module: ModuleId }) {
         {visible.map(item => {
           const entry = { id: item.id, kind: 'item' as const, label: item.title };
           return <SortRow key={item.id} entry={entry} disabled={editing?.id === item.id}
-            className={`favorite-row ${module === 'todos' ? `todo-row ${item.completed ? 'completed' : ''}` : module === 'bookmarks' ? 'bookmark-row' : 'note-row'}`}>
+            className={`favorite-row ${module === 'todos' ? `todo-row ${item.completed ? 'completed' : ''}` : module === 'bookmarks' ? 'bookmark-row' : 'note-row'}`}
+            onActivate={module === 'todos' ? () => setEditing(item) : module === 'bookmarks' ? () => void run(() => call('open_bookmark', { id: item.id })) : () => void run(() => navigate({ selectedNoteId: item.id, noteEditor: true }))}>
             {module === 'todos' ? <>
               <button className={`checkbox ${item.completed ? 'checked' : ''}`} role="checkbox" aria-checked={!!item.completed} aria-label={`${item.completed ? '恢复' : '完成'}：${item.title}`} onClick={() => void run(() => mutate('todos', { type: 'update', id: item.id, completed: !item.completed }))}>{item.completed ? <Icon name="check" size={12}/> : null}</button>
               <div className="row-title">
-              <button data-row-drag className="todo-title" onClick={() => setEditing(item)}>{item.title}</button></div>
+              <button data-row-drag className="todo-title">{item.title}</button></div>
             </> : <div className="row-title">
-              {module === 'bookmarks' ? <button data-row-drag className="bookmark-select" onClick={() => void run(() => call('open_bookmark', { id: item.id }))}><BookmarkIcon icon={item.icon}/><span>{item.title}</span></button> : <button data-row-drag className="note-select" onClick={() => void run(() => navigate({ selectedNoteId: item.id, noteEditor: true }))}>{item.id === draft?.id ? draft.title || '未命名便签' : item.title}</button>}
+              {module === 'bookmarks' ? <button data-row-drag className="bookmark-select"><BookmarkIcon icon={item.icon}/><span>{item.title}</span></button> : <button data-row-drag className="note-select">{item.id === draft?.id ? draft.title || '未命名便签' : item.title}</button>}
               <FavoriteButton module={module} item={item} className="row-action"/>
             </div>}
             <RowMenu title={item.title} onEdit={() => {

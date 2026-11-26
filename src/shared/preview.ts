@@ -22,12 +22,12 @@ function normalize(d: ModuleData) {
 }
 export async function previewInvoke<T>(command: string, args: Record<string, unknown>): Promise<T> {
   if (command === 'cli_status') return {
-    installed: false, version: null, bundledVersion: '1.1.0', path: '/usr/local/bin/overstory',
+    installed: false, version: null, bundledVersion: '1.1.1', path: '/usr/local/bin/overstory',
     canInstall: false, canUpgrade: false, canUninstall: false, message: '请在桌面应用中管理 CLI。'
   } as T;
   if (command === 'manage_cli') throw new Error('请在桌面应用中管理 CLI');
   if (command === 'skill_status') return {
-    installed: false, version: null, bundledVersion: '1.1.0', path: '~/.agents/skills/overstory',
+    installed: false, version: null, bundledVersion: '1.1.1', path: '~/.agents/skills/overstory',
     canInstall: false, canUpgrade: false, canUninstall: false, message: '请在桌面应用中管理 SKILL。'
   } as T;
   if (command === 'manage_skill') throw new Error('请在桌面应用中管理 SKILL');

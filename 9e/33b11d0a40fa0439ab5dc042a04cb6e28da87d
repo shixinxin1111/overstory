@@ -1,0 +1,49 @@
+docs/cli.md
+  7cce71112d06acfb 7,172
+src/app/SettingsView.tsx
+  7cce71112d06acfb 22
+README.md
+  7cce71112d06acfb 24
+package.json
+  7cce71112d06acfb 3
+src/shared/components/FavoritesView.tsx
+  7cce71112d06acfb 37-38,42,44
+src/shared/preview.ts
+  7cce71112d06acfb 25,30
+src-tauri/tauri.conf.json
+  7cce71112d06acfb 4
+src-tauri/Cargo.toml
+  7cce71112d06acfb 3
+src/shared/sortable/Sortable.tsx
+  7cce71112d06acfb 147,153-158
+src/modules/bookmarks/BookmarkView.tsx
+  7cce71112d06acfb 47
+src/modules/notes/NotesView.tsx
+  7cce71112d06acfb 52
+Cargo.toml
+  7cce71112d06acfb 7
+src/modules/todos/TodoView.tsx
+  7cce71112d06acfb 41,44
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.3.4",
+  "base_commit_sha": "9e33b11d0a40fa0439ab5dc042a04cb6e28da87d",
+  "prompts": {
+    "7cce71112d06acfb": {
+      "agent_id": {
+        "tool": "trae",
+        "id": "6b07f96611a29ad6f6901606",
+        "model": "deepseek-v4.1-flash"
+      },
+      "human_author": "shixinxin.star",
+      "messages": [],
+      "total_additions": 25,
+      "total_deletions": 18,
+      "accepted_lines": 25,
+      "overriden_lines": 0
+    }
+  },
+  "attestation_metadata": {},
+  "remote_transcripts": {}
+}

@@ -1,6 +1,6 @@
 [package]
 name = "overstory"
-version = "1.1.1"
+version = "1.2.0"
 description = "A personal floating workspace"
 edition = "2021"
 
@@ -16,6 +16,7 @@ overstory-core = { path = "../crates/overstory-core" }
 notify = "8"
 semver = "1"
 tauri = { version = "2", features = ["macos-private-api"] }
+tauri-plugin-autostart = "2"
 tauri-plugin-dialog = "2"
 tauri-plugin-opener = "2"
 serde = { version = "1", features = ["derive"] }

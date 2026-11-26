@@ -5,6 +5,7 @@ import { useSession, setSession, currentSession, flushAll } from '../../app/sess
 import { commitSort } from '../../shared/sortable/actions';
 import { Button, Confirm, EmptyState, IconButton, SearchField, report, run } from '../../shared/components/Controls';
 import { SortableScope, SortRow, EndDrop } from '../../shared/sortable/Sortable';
+import { previewOrder, useSortPreview } from '../../shared/sortable/preview';
 import { Icon } from '../../shared/icons';
 import { reveal } from '../../shared/motion';
 import type { Item } from '../../shared/types';
@@ -23,6 +24,8 @@ export function TodoView() {
   const [editing, setEditing] = useState<Item | null>(null);
   const [deleting, setDeleting] = useState<Item | null>(null);
   const visible = items.filter(i => (session.todoFilter === 'all' || i.completed === (session.todoFilter === 'completed')) && `${i.title} ${i.content ?? ''}`.toLocaleLowerCase().includes(query.toLocaleLowerCase()));
+  const preview = useSortPreview();
+  const ordered = previewOrder(visible, preview, 'item');
   const add = async () => {
     if (pending.current || !title.trim()) return; pending.current = true; setBusy(true);
     try { await flushAll(); await mutate('todos', { type: 'create', title }); setTitle(''); setSession({ todoAdding: false, todoFilter: 'active', search: { ...currentSession().search, todos: '' } }); } catch (e) { report(e); } finally { pending.current = false; setBusy(false); }
@@ -36,7 +39,7 @@ export function TodoView() {
     </div>
     {query ? <p className="sort-hint">清空搜索后可排序</p> : null}
     <SortableScope onMove={async (entry, target) => { await run(() => commitSort('todos', entry, target)); }}>
-      <div className="list-scroll" data-scroll>{adding ? <form className="quick-add" onSubmit={e => { e.preventDefault(); void add(); }}><Icon name="todos" size={18}/><input autoFocus aria-label="新增待办" placeholder="输入待办标题，回车添加" value={title} disabled={busy} onChange={e => setTitle(e.target.value)} onKeyDown={e => { if (e.nativeEvent.isComposing) { if (e.key === 'Enter') e.preventDefault(); return; } if (e.key === 'Escape') { e.stopPropagation(); if (!busy) setSession({ todoAdding: false }); } }} maxLength={200}/><IconButton icon="close" label="取消添加" disabled={busy} onClick={() => setSession({ todoAdding: false })}/></form> : null}<AnimatePresence initial={false}>{visible.map(item => {
+      <div className="list-scroll" data-scroll>{adding ? <form className="quick-add" onSubmit={e => { e.preventDefault(); void add(); }}><Icon name="todos" size={18}/><input autoFocus aria-label="新增待办" placeholder="输入待办标题，回车添加" value={title} disabled={busy} onChange={e => setTitle(e.target.value)} onKeyDown={e => { if (e.nativeEvent.isComposing) { if (e.key === 'Enter') e.preventDefault(); return; } if (e.key === 'Escape') { e.stopPropagation(); if (!busy) setSession({ todoAdding: false }); } }} maxLength={200}/><IconButton icon="close" label="取消添加" disabled={busy} onClick={() => setSession({ todoAdding: false })}/></form> : null}<AnimatePresence initial={false}>{ordered.map(item => {
         const entry = { id: item.id, kind: 'item' as const, label: item.title };
         return <motion.div key={item.id} {...reveal}><SortRow entry={entry} disabled={!!query || editing?.id === item.id} className={`todo-row ${item.completed ? 'completed' : ''}`} onActivate={() => setEditing(item)}>
           <button className={`checkbox ${item.completed ? 'checked' : ''}`} role="checkbox" aria-checked={!!item.completed} aria-label={`${item.completed ? '恢复' : '完成'}：${item.title}`} onClick={() => void run(() => mutate('todos', { type: 'update', id: item.id, completed: !item.completed }))}><svg viewBox="0 0 20 20" aria-hidden="true"><motion.path d="m5 10 3.5 3.5L15 6" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" animate={{ pathLength: item.completed ? 1 : 0 }} transition={{ duration: .18 }}/></svg></button>

@@ -4,6 +4,7 @@ release/
 src-tauri/target/
 src-tauri/binaries/
 src-tauri/gen/
+.trae-html-share-packages/
 verification/cli-qa-runtime.json
 *.log
 .DS_Store

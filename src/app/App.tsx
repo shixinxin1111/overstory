@@ -14,7 +14,9 @@ import { ToastHost, report, run, toast } from '../shared/components/Controls';
 import { Icon } from '../shared/icons';
 import { FavoritesView } from '../shared/components/FavoritesView';
 import { springs } from '../shared/motion';
+import { applyTheme, readTheme } from '../shared/theme';
 import type { AppError, Presentation, Session, Snapshot } from '../shared/types';
+import type { ThemeId } from '../shared/theme';
 import '../modules/notes/drafts';
 
 const windowLabel = native ? getCurrentWindow().label : 'preview';
@@ -28,6 +30,12 @@ export function App() {
   const selectedModule = modules.find(m => m.id === session.activeModuleId) ?? modules[0];
   const View = selectedModule.View;
   const showSettings = settings && presentation === 'main';
+  useEffect(() => {
+    applyTheme(readTheme());
+    let disposed = false; let off: (() => void) | undefined;
+    void on<ThemeId>('overstory:theme', applyTheme).then(fn => { if (disposed) fn(); else off = fn; });
+    return () => { disposed = true; off?.(); };
+  }, []);
   useEffect(() => {
     const unlisteners: (() => void)[] = [];
     let disposed = false;

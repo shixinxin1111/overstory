@@ -1,6 +1,6 @@
 {
   "name": "overstory",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@12.5.1",
@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "@tauri-apps/api": "^2",
+    "@tauri-apps/plugin-autostart": "^2.7.0",
     "dompurify": "^3.5.0",
     "marked": "^18.3.0",
     "motion": "^12",

@@ -3,6 +3,7 @@ import type { ReactNode, PointerEvent as ReactPointerEvent, KeyboardEvent as Rea
 import { createPortal } from 'react-dom';
 import { motion, useMotionValue } from 'motion/react';
 import { springs } from '../motion';
+import { currentSortPreview, setSortPreview } from './preview';
 
 export type SortKind = 'item' | 'group' | 'nav';
 export type SortEntry = { id: string; kind: SortKind; label: string; groupId?: string };
@@ -30,11 +31,14 @@ export function SortableScope({ children, onMove, groups = [], orientation = 've
   const clean = useRef<(() => void) | undefined>(undefined);
   const suppressed = useRef<{ id: string; until: number } | null>(null);
   const callbacks = useRef({ onMove, onHoverGroup }); callbacks.current = { onMove, onHoverGroup };
-  const commit = (d: Drag | null) => { if (d?.target) void callbacks.current.onMove(d.entry, d.target); };
-  const update = (next: Drag | null) => { current.current = next; setDrag(next); };
-  const cancel = () => { clean.current?.(); update(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); };
+  const commit = (d: Drag | null) => {
+    if (!d?.target) { setSortPreview(null); return; }
+    void callbacks.current.onMove(d.entry, d.target).finally(() => { if (currentSortPreview() === d) setSortPreview(null); });
+  };
+  const update = (next: Drag | null) => { current.current = next; setDrag(next); if (next) setSortPreview(next); };
+  const cancel = () => { clean.current?.(); update(null); setSortPreview(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); };
   useEffect(() => {
-    const abort = () => { clean.current?.(); current.current = null; setDrag(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); };
+    const abort = () => { clean.current?.(); current.current = null; setDrag(null); setSortPreview(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); };
     const key = (e: KeyboardEvent) => { if (current.current && e.key === 'Escape' && !e.isComposing) { e.preventDefault(); e.stopImmediatePropagation(); abort(); } };
     window.addEventListener('blur', abort); document.addEventListener('keydown', key, true);
     document.addEventListener('overstory:cancel-drag', abort);
@@ -111,7 +115,7 @@ export function SortableScope({ children, onMove, groups = [], orientation = 've
       if (active) suppressed.current = { id: `${entry.kind}:${entry.id}`, until: performance.now() + 450 };
       clean.current = undefined;
     };
-    const up = () => { const d = current.current; stop(); update(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); if (active) commit(d); };
+    const up = () => { const d = current.current; stop(); update(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); if (active) commit(d); else setSortPreview(null); };
     const abort = () => { stop(); update(null); setHoverGroup(null); callbacks.current.onHoverGroup?.(null); };
     clean.current = stop;
     x.set(rect.left); y.set(rect.top);
@@ -157,7 +161,7 @@ export function SortRow({ entry, children, className = '', disabled = false, onA
       onActivate();
     }}
     onClickCapture={e => { if (e.detail > 0 && api.suppressClick(entry)) { e.preventDefault(); e.stopPropagation(); } }}
-    className={`sort-row ${disabled ? 'sort-disabled' : ''} ${className} ${api.marker(entry.kind, entry.id, entry.groupId) ? 'insert-before' : ''} ${api.drag?.entry.id === entry.id && api.drag.entry.kind === entry.kind ? 'drag-source' : ''}`}>{children}</motion.div>;
+    className={`sort-row ${disabled ? 'sort-disabled' : ''} ${className} ${api.marker(entry.kind, entry.id, entry.groupId) ? 'insert-before' : ''} ${api.drag?.entry.id === entry.id && api.drag.entry.kind === entry.kind ? `drag-source ${api.drag.keyboard ? '' : 'drag-source-hidden'}` : ''}`}>{children}</motion.div>;
 }
 export function GroupDrop({ id, children, className = '' }: { id: string; children: ReactNode; className?: string }) {
   const api = useContext(Context)!;

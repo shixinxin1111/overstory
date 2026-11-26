@@ -5,6 +5,7 @@ import { springs } from '../motion';
 import type { Group, Item, ModuleId } from '../types';
 import { currentSession, setSession, useSession } from '../../app/session';
 import { GroupDrop, SortRow, EndDrop, useDrag, useSortHover } from '../sortable/Sortable';
+import { previewGroupedItems, previewOrder, useSortPreview } from '../sortable/preview';
 import { Button, Dialog, IconButton, Confirm, report } from './Controls';
 import { Icon } from '../icons';
 import { mutate } from '../snapshot-store';
@@ -43,12 +44,14 @@ export function GroupedList({ module, groups, items, search, temporaryGroup, ren
 }) {
   const session = useSession();
   const selected = session.selectedGroupIds[module];
-  const shown = orderedGroups(groups).filter(g => selected === 'all' || g.id === selected);
+  const preview = useSortPreview();
+  const shown = previewOrder(orderedGroups(groups).filter(g => selected === 'all' || g.id === selected), preview, 'group');
+  const previewed = previewGroupedItems(items, preview);
   return <>{shown.map(group => {
     const entry = { id: group.id, kind: 'group' as const, label: group.name };
     const key = `${module}:${group.id}`;
     const collapsed = session.collapsed[key] && temporaryGroup !== group.id && !search;
-    const groupItems = items.filter(i => i.groupId === group.id);
+    const groupItems = previewed.filter(i => i.groupId === group.id);
     return <motion.section layout="position" transition={springs.content} className="group-section" key={group.id}>
       <SortRow entry={entry} disabled={!!search || group.id === 'ungrouped'} className="group-row"><GroupDrop id={group.id} className="group-title-drop"><button data-row-drag className="group-heading" aria-expanded={!collapsed} onClick={() => setSession({ collapsed: { ...currentSession().collapsed, [key]: !session.collapsed[key] } })}><Icon name="chevron" size={14} style={{ transform: `rotate(${collapsed ? 0 : 90}deg)` }}/><span>{group.name}</span><small>{groupItems.length}</small></button></GroupDrop><GroupActions module={module} group={group}/></SortRow>
       {!collapsed ? <div className="group-items">{groupItems.map(renderItem)}{!groupItems.length ? <GroupDrop id={group.id} className="group-empty">{search ? '无匹配项' : '空分组'}</GroupDrop> : null}<EndDrop kind="item" groupId={group.id}/></div> : null}

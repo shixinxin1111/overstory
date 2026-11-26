@@ -9,6 +9,7 @@ import { call } from '../bridge';
 import { Icon } from '../icons';
 import { mutate, useSnapshot } from '../snapshot-store';
 import { commitFavoriteSort, commitSort } from '../sortable/actions';
+import { previewOrder, useSortPreview } from '../sortable/preview';
 import { EndDrop, SortableScope, SortRow } from '../sortable/Sortable';
 import type { Item, ModuleId } from '../types';
 import { Confirm, EmptyState, run } from './Controls';
@@ -26,12 +27,14 @@ export function FavoritesView({ module }: { module: ModuleId }) {
     ? data.items.filter(i => !i.completed).sort((a, b) => a.sortIndex - b.sortIndex)
     : data.items.filter(i => i.favorited).sort((a, b) => (a.favoriteIndex ?? 0) - (b.favoriteIndex ?? 0));
   const selected = module === 'notes' ? visible.find(i => i.id === session.selectedNoteId) : undefined;
+  const preview = useSortPreview();
+  const ordered = previewOrder(visible, preview, 'item');
   const showEditor = !!selected && session.noteEditor;
   if (showEditor && selected) return <div className="module-view favorites-view favorite-editor"><NoteEditor item={selected} panel/></div>;
   return <div className="module-view favorites-view">
     <SortableScope onMove={async (entry, target) => { await run(() => module === 'todos' ? commitSort(module, entry, target) : commitFavoriteSort(module, entry, target)); }}>
       <div className="list-scroll favorites-list" data-scroll>
-        {visible.map(item => {
+        {ordered.map(item => {
           const entry = { id: item.id, kind: 'item' as const, label: item.title };
           return <SortRow key={item.id} entry={entry} disabled={editing?.id === item.id}
             className={`favorite-row ${module === 'todos' ? `todo-row ${item.completed ? 'completed' : ''}` : module === 'bookmarks' ? 'bookmark-row' : 'note-row'}`}
